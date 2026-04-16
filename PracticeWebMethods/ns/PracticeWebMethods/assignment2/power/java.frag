@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">power</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">SURhdGFDdXJzb3IgY3Vyc29yID0gcGlwZWxpbmUuZ2V0Q3Vyc29yKCk7DQoNCi8vIEdldCBpbnB1
+dHMNClN0cmluZyBiYXNlU3RyID0gSURhdGFVdGlsLmdldFN0cmluZyhjdXJzb3IsICJiYXNlIik7
+DQpTdHJpbmcgZXhwU3RyID0gSURhdGFVdGlsLmdldFN0cmluZyhjdXJzb3IsICJleHAiKTsNCg0K
+ZG91YmxlIGJhc2UgPSBEb3VibGUucGFyc2VEb3VibGUoYmFzZVN0cik7DQppbnQgZXhwID0gSW50
+ZWdlci5wYXJzZUludChleHBTdHIpOw0KDQpkb3VibGUgcmVzdWx0ID0gMTsNCg0KZm9yKGludCBp
+ID0gMTsgaSA8PSBleHA7IGkrKykgew0KICAgIHJlc3VsdCA9IHJlc3VsdCAqIGJhc2U7DQp9DQoN
+CklEYXRhVXRpbC5wdXQoY3Vyc29yLCAicmVzdWx0IiwgcmVzdWx0KTsNCmN1cnNvci5kZXN0cm95
+KCk7DQoJ</value>
+</Values>
