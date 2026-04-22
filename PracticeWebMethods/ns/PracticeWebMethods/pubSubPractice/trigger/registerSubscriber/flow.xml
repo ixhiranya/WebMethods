@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
-  <COMMENT></COMMENT>
 
   <!-- nodes -->
 
@@ -100,7 +99,10 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">Item Received: ID=%PracticeWebMethods.pubSubPractice.document:itemsDetails/id%, Name=%PracticeWebMethods.pubSubPractice.document:itemsDetails/itemName%, Qty=%PracticeWebMethods.pubSubPractice.document:itemsDetails/quantity%</value>
+  <value name="xml">Registration details: 
+Name : %PracticeWebMethods.pubSubPractice.document:registerForm/name%
+PhoneNo: %PracticeWebMethods.pubSubPractice.document:registerForm/phoneNo%
+Country: %PracticeWebMethods.pubSubPractice.document:registerForm/country%</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">field</value>
     <value name="node_subtype">unknown</value>

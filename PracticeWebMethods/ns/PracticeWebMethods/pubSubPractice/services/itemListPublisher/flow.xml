@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT></COMMENT>
 
   <!-- nodes -->
 
-<LOOP TIMEOUT="" IN-ARRAY="/inputList">
+<LOOP TIMEOUT="" IN-ARRAY="/itemDetails">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -107,19 +108,33 @@
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">inputList</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">PracticeWebMethods.pubSubPractice.document:itemsDetails</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
         <value name="node_comment"></value>
         <record name="node_hints" javaclass="com.wm.util.Values">
           <value name="field_largerEditor">false</value>
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">inputList</value>
+        <value name="field_name">itemList</value>
         <value name="field_type">recref</value>
-        <value name="field_dim">0</value>
+        <value name="field_dim">1</value>
         <value name="wrapper_type">IData</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
+        <value name="is_soap_array_encoding_used">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
         <value name="rec_ref">PracticeWebMethods.pubSubPractice.document:itemsDetails</value>
