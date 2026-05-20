@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT></COMMENT>
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="PracticeWebMethods.jdbcPractice.adapter:insert" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="PracticeWebMethods.jdbcPractice.adapter:batchInsert" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -17,7 +18,7 @@
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
     <value name="is_public">false</value>
-    <value name="field_name">insertInput</value>
+    <value name="field_name">batchInsertInput</value>
     <value name="field_type">record</value>
     <value name="field_dim">0</value>
     <value name="nillable">true</value>
@@ -28,7 +29,7 @@
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">insertInput</value>
+        <value name="field_name">batchInsertInput</value>
         <value name="field_type">record</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -50,26 +51,41 @@
             <value name="modifiable">true</value>
           </record>
           <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
+            <value name="node_type">record</value>
             <value name="node_subtype">unknown</value>
             <value name="is_public">false</value>
-            <value name="field_name">name</value>
-            <value name="field_type">string</value>
-            <value name="field_dim">0</value>
+            <value name="field_name">inputs</value>
+            <value name="field_type">record</value>
+            <value name="field_dim">1</value>
             <value name="nillable">true</value>
             <value name="form_qualified">false</value>
             <value name="is_global">false</value>
-          </record>
-          <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
-            <value name="node_subtype">unknown</value>
-            <value name="is_public">false</value>
-            <value name="field_name">email</value>
-            <value name="field_type">string</value>
-            <value name="field_dim">0</value>
-            <value name="nillable">true</value>
-            <value name="form_qualified">false</value>
-            <value name="is_global">false</value>
+            <value name="is_soap_array_encoding_used">false</value>
+            <array name="rec_fields" type="record" depth="1">
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">unknown</value>
+                <value name="node_subtype">unknown</value>
+                <value name="is_public">false</value>
+                <value name="field_name">enroll_id</value>
+                <value name="field_type">object</value>
+                <value name="field_dim">0</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">unknown</value>
+                <value name="node_subtype">unknown</value>
+                <value name="is_public">false</value>
+                <value name="field_name">student_id</value>
+                <value name="field_type">string</value>
+                <value name="field_dim">0</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+              </record>
+            </array>
+            <value name="modifiable">true</value>
           </record>
         </array>
         <value name="modifiable">true</value>
@@ -113,13 +129,14 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">inputs</value>
+        <value name="field_name">inputsList</value>
         <value name="field_type">record</value>
-        <value name="field_dim">0</value>
+        <value name="field_dim">1</value>
         <value name="wrapper_type">IData</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
+        <value name="is_soap_array_encoding_used">false</value>
         <array name="rec_fields" type="record" depth="1">
           <record javaclass="com.wm.util.Values">
             <value name="node_type">record</value>
@@ -131,7 +148,7 @@
               <value name="field_password">false</value>
             </record>
             <value name="is_public">false</value>
-            <value name="field_name">name</value>
+            <value name="field_name">enroll_id</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <array name="field_options" type="value" depth="1">
@@ -150,7 +167,7 @@
               <value name="field_password">false</value>
             </record>
             <value name="is_public">false</value>
-            <value name="field_name">email</value>
+            <value name="field_name">student_id</value>
             <value name="field_type">string</value>
             <value name="field_dim">0</value>
             <array name="field_options" type="value" depth="1">
@@ -171,7 +188,10 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/inputs;2;0" TO="/insertInput;2;0">
+<MAPCOPY FROM="/inputsList;2;1/enroll_id;1;0" TO="/batchInsertInput;2;0/inputs;2;1/enroll_id;3;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/inputsList;2;1/student_id;1;0" TO="/batchInsertInput;2;0/inputs;2;1/student_id;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
