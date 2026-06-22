@@ -1,0 +1,174 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "CompanyManagementRad_"
+host: "Hiranya:5555"
+basePath: "/rad/CompanyManagementAssignment.ws.rs.emptyBasedRest:CompanyManagementRad_"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /company/getAll:
+    get:
+      operationId: "companygetAll_GET_1"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/companygetAll_GET_response"
+        "401":
+          description: "Access Denied"
+  /company/{companyId}:
+    get:
+      operationId: "companycompanyId_GET_2"
+      parameters:
+      - name: "companyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/companycompanyId_GET_response"
+        "401":
+          description: "Access Denied"
+  /company/add:
+    post:
+      operationId: "companyadd_POST_3"
+      parameters:
+      - in: "body"
+        name: "companyDoc"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/CompanyDoc"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/companyadd_POST_response"
+        "401":
+          description: "Access Denied"
+  /company/update:
+    patch:
+      operationId: "companyupdate_PATCH_4"
+      parameters:
+      - in: "body"
+        name: "companyDoc"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/CompanyDoc"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/companyupdate_PATCH_response"
+        "401":
+          description: "Access Denied"
+definitions:
+  companyupdate_PATCH_response:
+    required:
+    - "response"
+    properties:
+      response:
+        $ref: "#/definitions/response"
+  TaskDoc:
+    required:
+    - "projectId"
+    - "status"
+    - "taskId"
+    - "taskName"
+    properties:
+      taskId:
+        type: "string"
+      projectId:
+        type: "string"
+      taskName:
+        type: "string"
+      status:
+        type: "string"
+  response:
+    required:
+    - "code"
+    - "message"
+    - "msgCode"
+    properties:
+      code:
+        type: "string"
+      msgCode:
+        type: "string"
+      message:
+        type: "string"
+  CompanyDoc:
+    required:
+    - "companyId"
+    - "companyName"
+    - "location"
+    - "projectDoc"
+    properties:
+      companyId:
+        type: "string"
+      companyName:
+        type: "string"
+      location:
+        type: "string"
+      projectDoc:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProjectDoc"
+  ProjectDoc:
+    required:
+    - "companyId"
+    - "projectId"
+    - "projectName"
+    - "startDate"
+    - "taskDoc"
+    properties:
+      projectId:
+        type: "string"
+      companyId:
+        type: "string"
+      projectName:
+        type: "string"
+      startDate:
+        type: "string"
+      taskDoc:
+        type: "array"
+        items:
+          $ref: "#/definitions/TaskDoc"
+  companyadd_POST_response:
+    required:
+    - "response"
+    properties:
+      response:
+        $ref: "#/definitions/response"
+  companygetAll_GET_response:
+    required:
+    - "companyDoc"
+    - "response"
+    properties:
+      companyDoc:
+        type: "array"
+        items:
+          $ref: "#/definitions/CompanyDoc"
+      response:
+        $ref: "#/definitions/response"
+  companycompanyId_GET_response:
+    required:
+    - "output"
+    - "response"
+    properties:
+      output:
+        $ref: "#/definitions/CompanyDoc"
+      response:
+        $ref: "#/definitions/response"

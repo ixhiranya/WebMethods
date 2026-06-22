@@ -1,0 +1,228 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0"
+  title: "CompanyManagementRad"
+host: "Hiranya:5555"
+basePath: "/rad/CompanyManagementAssignment.ws.rs.documentBasedRest:CompanyManagementRad"
+schemes:
+- "http"
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /CompanyManagement:
+    get:
+      operationId: "CompanyManagement_GET_1"
+      parameters: []
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CompanyManagement_GET_response"
+        "401":
+          description: "Access Denied"
+    post:
+      operationId: "CompanyManagement_POST_1"
+      parameters:
+      - in: "body"
+        name: "input"
+        required: true
+        schema:
+          $ref: "#/definitions/CompanyManagement"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CompanyManagement_POST_response"
+        "401":
+          description: "Access Denied"
+  /CompanyManagement/{companyId}:
+    get:
+      operationId: "CompanyManagementcompanyId_GET_2"
+      parameters:
+      - name: "companyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CompanyManagementcompanyId_GET_response"
+        "401":
+          description: "Access Denied"
+    delete:
+      operationId: "CompanyManagementcompanyId_DELETE_2"
+      parameters:
+      - name: "companyId"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CompanyManagementcompanyId_DELETE_response"
+        "401":
+          description: "Access Denied"
+    patch:
+      operationId: "CompanyManagementcompanyId_PATCH_2"
+      parameters:
+      - name: "companyId"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "input"
+        required: true
+        schema:
+          $ref: "#/definitions/CompanyManagement"
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/CompanyManagementcompanyId_PATCH_response"
+        "401":
+          description: "Access Denied"
+definitions:
+  source:
+    properties:
+      pointer:
+        type: "string"
+      parameter:
+        type: "string"
+  TaskDoc:
+    required:
+    - "projectId"
+    - "status"
+    - "taskId"
+    - "taskName"
+    properties:
+      taskId:
+        type: "string"
+      projectId:
+        type: "string"
+      taskName:
+        type: "string"
+      status:
+        type: "string"
+  CompanyManagement:
+    required:
+    - "companyId"
+    - "companyName"
+    - "location"
+    - "projectDoc"
+    properties:
+      companyId:
+        type: "string"
+      companyName:
+        type: "string"
+      location:
+        type: "string"
+      projectDoc:
+        type: "array"
+        items:
+          $ref: "#/definitions/ProjectDoc"
+  CompanyManagementcompanyId_PATCH_response:
+    required:
+    - "errors"
+    - "output"
+    properties:
+      output:
+        $ref: "#/definitions/CompanyManagement"
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/errorTemplate"
+  CompanyManagementcompanyId_GET_response:
+    required:
+    - "errors"
+    - "output"
+    properties:
+      output:
+        $ref: "#/definitions/CompanyManagement"
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/errorTemplate"
+  CompanyManagementcompanyId_DELETE_response:
+    required:
+    - "errors"
+    - "output"
+    properties:
+      output:
+        $ref: "#/definitions/CompanyManagement"
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/errorTemplate"
+  links:
+    properties:
+      about:
+        type: "string"
+  CompanyManagement_POST_response:
+    required:
+    - "errors"
+    - "output"
+    properties:
+      output:
+        $ref: "#/definitions/CompanyManagement"
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/errorTemplate"
+  ProjectDoc:
+    required:
+    - "companyId"
+    - "projectId"
+    - "projectName"
+    - "startDate"
+    - "taskDoc"
+    properties:
+      projectId:
+        type: "string"
+      companyId:
+        type: "string"
+      projectName:
+        type: "string"
+      startDate:
+        type: "string"
+      taskDoc:
+        type: "array"
+        items:
+          $ref: "#/definitions/TaskDoc"
+  CompanyManagement_GET_response:
+    required:
+    - "errors"
+    - "output"
+    properties:
+      output:
+        type: "array"
+        items:
+          $ref: "#/definitions/CompanyManagement"
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/errorTemplate"
+  errorTemplate:
+    properties:
+      id:
+        type: "string"
+      links:
+        $ref: "#/definitions/links"
+      status:
+        type: "string"
+      code:
+        type: "string"
+      title:
+        type: "string"
+      detail:
+        type: "string"
+      source:
+        $ref: "#/definitions/source"
+      meta:
+        type: "string"
+        format: "binary"
